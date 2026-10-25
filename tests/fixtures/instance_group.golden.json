@@ -1,0 +1,102 @@
+{
+  "id": "6f1c2a4e-8b7d-4c1a-9e2f-3a5b7c9d1e01",
+  "name": "web",
+  "description": "Public web tier",
+  "status": "ok",
+  "health_check": "instance",
+  "health_check_grace_seconds": 300,
+  "drain_seconds": 30,
+  "min_size": 1,
+  "max_size": 5,
+  "desired_capacity": 2,
+  "instance_count": 2,
+  "max_surge": 1,
+  "max_unavailable_pct": 0,
+  "template_version": 2,
+  "created_at": "2026-10-19T10:00:00Z",
+  "updated_at": "2026-10-22T12:00:00Z",
+  "launch_template": {
+    "version": 2,
+    "flavor_id": "7d2e9a10-4b5c-4e8f-a1b2-c3d4e5f60718",
+    "image_id": "ubuntu-24",
+    "vcpus": 2,
+    "ram_mb": 2048,
+    "disk_gb": 20,
+    "network_id": "0b9a7c31-2d4e-4f60-8a1b-5c6d7e8f9a0b",
+    "subnet_id": "a4b5c6d7-e8f9-4a0b-9c1d-2e3f4a5b6c7d",
+    "security_group_ids": [
+      "c1d2e3f4-a5b6-4c7d-8e9f-0a1b2c3d4e5f"
+    ],
+    "key_name": "ops-key",
+    "user_data_present": true,
+    "user_data_sha256": "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"
+  },
+  "pools": [
+    {
+      "pool_id": "e5f6a7b8-c9d0-4e1f-8a2b-3c4d5e6f7a8b",
+      "protocol_port": 80
+    }
+  ],
+  "scaling_policies": [
+    {
+      "metric": "cpu_percent",
+      "target": 60,
+      "window_seconds": 300,
+      "scale_out_cooldown_seconds": 180,
+      "scale_in_cooldown_seconds": 300,
+      "scale_in_window_seconds": 900,
+      "max_step_out": 2,
+      "max_step_in": 1,
+      "scale_in_enabled": true
+    }
+  ],
+  "schedules": [
+    {
+      "id": "3e4f5a6b-7c8d-4e9f-a0b1-c2d3e4f5a6b7",
+      "cron": "0 6 * * 1-5",
+      "min_size": 2,
+      "max_size": 5,
+      "desired_capacity": 3,
+      "last_slot": "2026-10-23T06:00:00Z"
+    }
+  ],
+  "refresh": {
+    "status": "in_progress",
+    "target_version": 2,
+    "started_at": "2026-10-22T11:00:00Z",
+    "completed_at": null,
+    "skipped_protected": 1
+  },
+  "members": [
+    {
+      "instance_id": "d0e1f2a3-b4c5-4d6e-9f70-8192a3b4c5d6",
+      "status": "active",
+      "protected_from_scale_in": false,
+      "template_version": 2,
+      "joined_at": "2026-10-20T08:00:00Z"
+    },
+    {
+      "instance_id": "e1f2a3b4-c5d6-4e7f-8091-a2b3c4d5e6f7",
+      "status": "pending",
+      "protected_from_scale_in": true,
+      "template_version": 1,
+      "joined_at": "2026-10-21T09:30:00Z"
+    }
+  ],
+  "activities": [
+    {
+      "id": 42,
+      "type": "member_created",
+      "reason": "scale_out",
+      "instance_id": "e1f2a3b4-c5d6-4e7f-8091-a2b3c4d5e6f7",
+      "created_at": "2026-10-21T09:30:00Z"
+    },
+    {
+      "id": 41,
+      "type": "capacity_set",
+      "reason": "",
+      "instance_id": null,
+      "created_at": "2026-10-21T09:00:00Z"
+    }
+  ]
+}

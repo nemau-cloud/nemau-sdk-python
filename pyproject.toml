@@ -1,0 +1,39 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "nemau-cloud"
+version = "0.2.0"
+description = "Python client for the Nemau Cloud public API"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "Apache-2.0" }
+keywords = ["nemau", "cloud", "iaas", "sdk"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Topic :: System :: Systems Administration",
+  "Typing :: Typed",
+]
+# No runtime dependencies: the package uses only the standard library.
+dependencies = []
+
+[project.urls]
+Repository = "https://github.com/nemau-cloud/nemau-sdk-python"
+
+[tool.hatch.build.targets.wheel]
+packages = ["nemau"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.mypy]
+python_version = "3.9"
+strict = true
